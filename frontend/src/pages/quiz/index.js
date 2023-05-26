@@ -18,12 +18,9 @@ const FormComponent = ({ setStartExam, form, setForm, setStartTime }) => {
 
   const handleCheckPassword = async () => {
     setDisableSignup(true);
-    const response = await fetch(
-      `${process.env.REACT_APP_BACKEND_URI}/api/score/get-password/${category}`,
-      {
-        method: 'GET',
-      }
-    );
+    const response = await fetch(`/api/score/get-password/${category}`, {
+      method: 'GET',
+    });
 
     const json = await response.json();
 
@@ -170,12 +167,9 @@ const Index = () => {
     window.scrollTo(0, 0);
 
     const getQuestions = async () => {
-      const response = await fetch(
-        `${process.env.REACT_APP_BACKEND_URI}/api/quizzes/${category}`,
-        {
-          method: 'GET',
-        }
-      );
+      const response = await fetch(`/api/quizzes/${category}`, {
+        method: 'GET',
+      });
 
       const json = await response.json();
 
@@ -192,12 +186,9 @@ const Index = () => {
       setLiveError('');
       setP('');
 
-      const response = await fetch(
-        `${process.env.REACT_APP_BACKEND_URI}/api/score/check-live/${category}`,
-        {
-          method: 'GET',
-        }
-      );
+      const response = await fetch(`/api/score/check-live/${category}`, {
+        method: 'GET',
+      });
 
       const json = await response.json();
 
@@ -215,7 +206,7 @@ const Index = () => {
       setLiveError('');
 
       const response = await fetch(
-        `${process.env.REACT_APP_BACKEND_URI}/api/score/check-done/${userData?._id}?category=${category}`,
+        `/api/score/check-done/${userData?._id}?category=${category}`,
         {
           method: 'GET',
         }
@@ -258,24 +249,21 @@ const Index = () => {
     }
 
     const date = Date.now().toString();
-    const response = await fetch(
-      `${process.env.REACT_APP_BACKEND_URI}/api/score/${category}`,
-      {
-        method: 'POST',
-        headers: {
-          'Content-Type': 'application/json',
-        },
-        body: JSON.stringify({
-          id: userData._id,
-          name: userData.name,
-          score: score,
-          submittedAt: date,
-          startedAt: startTime,
-          year: userData.year,
-          email: userData.email,
-        }),
-      }
-    );
+    const response = await fetch(`/api/score/${category}`, {
+      method: 'POST',
+      headers: {
+        'Content-Type': 'application/json',
+      },
+      body: JSON.stringify({
+        id: userData._id,
+        name: userData.name,
+        score: score,
+        submittedAt: date,
+        startedAt: startTime,
+        year: userData.year,
+        email: userData.email,
+      }),
+    });
 
     const json = await response.json();
 

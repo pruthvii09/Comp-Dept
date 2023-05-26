@@ -33,16 +33,13 @@ const Index = () => {
       setError('Password did not match!');
       setShowError(true);
     } else {
-      const response = await fetch(
-        `${process.env.REACT_APP_BACKEND_URI}/api/users/${id}`,
-        {
-          method: 'PATCH',
-          headers: {
-            'Content-Type': 'application/json',
-          },
-          body: JSON.stringify({ password }),
-        }
-      );
+      const response = await fetch(`/api/users/${id}`, {
+        method: 'PATCH',
+        headers: {
+          'Content-Type': 'application/json',
+        },
+        body: JSON.stringify({ password }),
+      });
 
       const json = await response.json();
 

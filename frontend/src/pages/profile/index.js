@@ -13,14 +13,11 @@ const Index = () => {
     window.scrollTo(0, 0);
 
     const fetchData = async () => {
-      const response = await fetch(
-        `${process.env.REACT_APP_BACKEND_URI}/api/users/${user?.id}`,
-        {
-          headers: {
-            Authorization: `Bearer ${user.token}`,
-          },
-        }
-      );
+      const response = await fetch(`/api/users/${user?.id}`, {
+        headers: {
+          Authorization: `Bearer ${user.token}`,
+        },
+      });
 
       const json = await response.json();
 

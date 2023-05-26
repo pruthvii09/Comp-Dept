@@ -80,16 +80,13 @@ const Index = () => {
       setShowError(true);
     } else {
       console.log(process.env.REACT_APP_BACKEND_URI);
-      const response = await fetch(
-        `${process.env.REACT_APP_BACKEND_URI}/api/users/signup`,
-        {
-          method: 'POST',
-          headers: {
-            'Content-Type': 'application/json',
-          },
-          body: JSON.stringify({ ...data }),
-        }
-      );
+      const response = await fetch(`/api/users/signup`, {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+        },
+        body: JSON.stringify({ ...data }),
+      });
       const json = await response.json();
       if (response.ok) {
         localStorage.setItem('user', JSON.stringify(json));

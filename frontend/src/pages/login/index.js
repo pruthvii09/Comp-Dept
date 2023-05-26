@@ -30,7 +30,7 @@ const Index = () => {
   }, [pathname]);
 
   const handleSignIn = async () => {
-    // console.log(`${process.env.REACT_APP_BACKEND_URI}/api/users/login`);
+    // console.log(`/api/users/login`);
 
     setDisableSignup(true);
     setShowError(false);

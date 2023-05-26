@@ -27,16 +27,13 @@ const Index = () => {
     setError('');
     setMessage('');
 
-    const response = await fetch(
-      `${process.env.REACT_APP_BACKEND_URI}/api/users/forget`,
-      {
-        method: 'POST',
-        headers: {
-          'Content-Type': 'application/json',
-        },
-        body: JSON.stringify({ email }),
-      }
-    );
+    const response = await fetch(`/api/users/forget`, {
+      method: 'POST',
+      headers: {
+        'Content-Type': 'application/json',
+      },
+      body: JSON.stringify({ email }),
+    });
 
     const json = await response.json();
 

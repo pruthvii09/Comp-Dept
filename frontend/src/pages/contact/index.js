@@ -33,16 +33,13 @@ const Index = () => {
       setError('All fields are required!');
       setShowError(true);
     } else {
-      const response = await fetch(
-        `${process.env.REACT_APP_BACKEND_URI}/api/contact`,
-        {
-          method: 'POST',
-          headers: {
-            'Content-Type': 'application/json',
-          },
-          body: JSON.stringify({ ...contactDetail }),
-        }
-      );
+      const response = await fetch(`/api/contact`, {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+        },
+        body: JSON.stringify({ ...contactDetail }),
+      });
 
       const json = await response.json();
 

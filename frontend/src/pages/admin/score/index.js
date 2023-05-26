@@ -6,9 +6,7 @@ const Index = () => {
   const [scores, setScores] = useState([]);
 
   const getScores = async () => {
-    const response = await fetch(
-      `${process.env.REACT_APP_BACKEND_URI}/api/score/${category}`
-    );
+    const response = await fetch(`/api/score/${category}`);
 
     const json = await response.json();
 
