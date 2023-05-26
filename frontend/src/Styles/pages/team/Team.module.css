@@ -1,0 +1,55 @@
+.container {
+}
+
+.container h1 {
+  font-size: 3rem;
+  text-align: center;
+}
+
+.container .blue {
+  color: var(--blue);
+}
+
+.container .green {
+  color: var(--green);
+}
+
+.container .red {
+  color: var(--red);
+}
+
+.container p {
+  margin-top: 20px;
+  font-size: 15px;
+  color: #333;
+  font-weight: 300;
+  line-height: 22px;
+  letter-spacing: 0.5px;
+  text-align: center;
+}
+
+.team_container {
+  /* width: 80%; */
+  margin: auto;
+}
+
+.team_container h2 {
+  text-align: center;
+  font-weight: 400;
+  color: #333;
+  margin: 30px 10px;
+  font-size: 40px;
+}
+
+.team_container .horizontal_row {
+  height: 0.8px;
+  width: 100%;
+  background: #dadada;
+}
+
+.team_members {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-wrap: wrap;
+}

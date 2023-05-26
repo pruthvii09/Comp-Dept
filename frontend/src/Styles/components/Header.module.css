@@ -1,0 +1,21 @@
+.header {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-direction: column;
+  padding: 60px 20px;
+  background-image: url('../../../public/images/bg1.png');
+  min-height: 400px;
+  background-attachment: fixed;
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: cover;
+  border-bottom: 2px solid #dfdfdf;
+  padding-top: 8rem;
+}
+
+@media screen and (max-width: 900px) {
+  .header {
+    padding-top: 60px;
+  }
+}

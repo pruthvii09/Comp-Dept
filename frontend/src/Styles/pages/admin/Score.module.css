@@ -1,0 +1,46 @@
+.container {
+  width: 500px;
+  margin: 150px auto;
+  margin-top: 200px;
+}
+
+.container .form {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-wrap: wrap;
+}
+
+.form input {
+  border: 1px solid #979797;
+  padding: 8px 10px;
+}
+
+.form button {
+  background: var(--blue);
+  padding: 9px 10px;
+  border: none;
+  color: #fdfdfd;
+  margin-left: 10px;
+}
+
+.scores {
+  margin-top: 30px;
+}
+
+.scores .score {
+  border: 1px solid var(--green);
+  margin: 10px 10px;
+  padding: 10px;
+  border-radius: 10px;
+}
+
+.score h3 {
+  font-weight: 400;
+  font-size: 16px;
+}
+
+.score h4 {
+  font-weight: 300;
+  font-size: 14px;
+}
