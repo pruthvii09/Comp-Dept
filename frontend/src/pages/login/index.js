@@ -46,16 +46,13 @@ const Index = () => {
       setError('Please enter password!');
       setShowError(true);
     } else {
-      const response = await fetch(
-        `${process.env.REACT_APP_BACKEND_URI}/api/users/login`,
-        {
-          method: 'POST',
-          headers: {
-            'Content-Type': 'application/json',
-          },
-          body: JSON.stringify({ ...data }),
-        }
-      );
+      const response = await fetch(`/api/users/login`, {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+        },
+        body: JSON.stringify({ ...data }),
+      });
       const json = await response.json();
       if (response.ok) {
         localStorage.setItem('user', JSON.stringify(json));
