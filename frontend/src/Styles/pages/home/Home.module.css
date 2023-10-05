@@ -31,25 +31,9 @@
 }
 
 .left_container h1 {
-  font-size: 6rem;
+  font-size: 5rem;
+  color: #222222;
 }
-
-.home .blue {
-  color: var(--blue);
-}
-
-.home .green {
-  color: var(--green);
-}
-
-.home .yellow {
-  color: var(--yellow);
-}
-
-.home .red {
-  color: var(--red);
-}
-
 .left_container p {
   font-size: 15px;
   color: #333;

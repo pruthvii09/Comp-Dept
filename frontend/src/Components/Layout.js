@@ -1,7 +1,7 @@
-import React, { useState } from 'react';
-import { Link } from 'react-router-dom';
-import { useUserContext } from '../hooks/useUserContext';
-import styles from '../Styles/components/Layout.module.css';
+import React, { useState } from "react";
+import { Link } from "react-router-dom";
+import { useUserContext } from "../hooks/useUserContext";
+import styles from "../Styles/components/Layout.module.css";
 
 const Layout = ({ children }) => {
   const { user, dispatch } = useUserContext();
@@ -10,17 +10,21 @@ const Layout = ({ children }) => {
 
   const handleLogout = () => {
     localStorage.clear();
-    dispatch({ type: 'LOGIN', payload: null });
+    dispatch({ type: "LOGIN", payload: null });
   };
 
   return (
     <div>
       <nav className={styles.navbar}>
         <Link to="/">
-          <img src="/images/logo.svg" alt="GDSC-PESMCOE-LOGO" />
+          <img
+            src="/images/Logo.png"
+            style={{ width: "400px" }}
+            alt="GDSC-PESMCOE-LOGO"
+          />
         </Link>
 
-        <ul className={open ? styles.active_navbar : ''}>
+        <ul className={open ? styles.active_navbar : ""}>
           <i
             className={`uil uil-times-circle ${styles.close_icon}`}
             onClick={() => setOpen(!open)}

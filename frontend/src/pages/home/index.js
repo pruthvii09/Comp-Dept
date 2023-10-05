@@ -1,6 +1,6 @@
-import React, { useEffect } from 'react';
-import { useNavigate, useLocation } from 'react-router-dom';
-import styles from '../../Styles/pages/home/Home.module.css';
+import React, { useEffect } from "react";
+import { useNavigate, useLocation } from "react-router-dom";
+import styles from "../../Styles/pages/home/Home.module.css";
 
 const Index = () => {
   const navigate = useNavigate();
@@ -14,30 +14,17 @@ const Index = () => {
     <div className={styles.home} id="#home">
       <div className={styles.container}>
         <div className={styles.left_container}>
-          <h1>
-            <span className={styles.blue}>Andr</span>
-            <span className={styles.green}>oid</span>
-          </h1>
-          <h1 style={{ marginLeft: '-10px' }}>
-            <span className={styles.green}>Com</span>
-            <span className={styles.yellow}>pose</span>
-          </h1>
-          <h1 style={{ marginLeft: '-10px' }}>
-            <span className={styles.red}>Camp</span>
-            <span className={styles.blue}> Fe</span>
-            <span className={styles.green}>st</span>
-          </h1>
-          <p>Hello there, coders! 🔊</p>
+          <h1 className={styles.heading}>Computer Department, PESMCOE</h1>
+          <p>Hello there People</p>
           <p>
-            Plan out your plans for developing Android apps📱 and learn the
-            fundamentals of Android app development! GDSC - Progressive
-            Education Society's Modern College Of Engineering, Pune chapter is
-            here with an amazing Android Compose Camp, which is organised by the
-            community to enrich our code monkeys' coding experience! So, what
-            are you still waiting for?✨✨
+            Department of Computer Engineering at P.E.S's Modern College of
+            Engineering started in the year 1999. The department has
+            undergraduate (UG) program with intake capacity of 60 (1999) and
+            with the increasing intake of 60 (2014) and two years Master
+            programme in Computer Engineering started in the year 2011-2012.
           </p>
 
-          <button onClick={() => navigate('/signup')}>Register Now</button>
+          <button onClick={() => navigate("/signup")}>Register Now</button>
         </div>
         <div className={styles.right_container}>
           <img src="/images/home/home-hero.svg" alt="Home_Hero_Image" />
@@ -46,7 +33,7 @@ const Index = () => {
 
       <div className={styles.about}>
         <h2>
-          What is <b>Android Compose Camp?</b>
+          Why <b>Computer Department PESMCOE ?</b>
         </h2>
         <div className={styles.horizontal_row}></div>
         <p>
@@ -60,7 +47,7 @@ const Index = () => {
           and check out how you can take part in this event ASAP!🏋️
         </p>
         <img src="/images/home/android-jetpack.png" alt="" />
-        <button onClick={() => navigate('/signup')}>
+        <button onClick={() => navigate("/signup")}>
           <i className="uil uil-bell"></i> Register For Event
         </button>
       </div>
@@ -70,9 +57,8 @@ const Index = () => {
         <div>
           <h3>Join GDSC PES MCOE 2022</h3>
           <h4>
-            <span className={styles.red}>Hello</span>{' '}
-            <span className={styles.blue}>there,</span>{' '}
-            <span className={styles.green}>coders!</span> 🔊
+            <span className={styles.red}>Hello</span>{" "}
+            <span className={styles.blue}>there,</span>{" "}
           </h4>
           <p>
             Plan out your plans for developing Android apps📱 and learn the
@@ -81,7 +67,7 @@ const Index = () => {
             enrich our code monkeys' coding experience! So, what are you still
             waiting for?✨✨
           </p>
-          <button onClick={() => navigate('/contact')}>Join Now</button>
+          <button onClick={() => navigate("/contact")}>Join Now</button>
         </div>
       </div>
 
