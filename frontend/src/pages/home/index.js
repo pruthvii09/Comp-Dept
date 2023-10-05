@@ -1,10 +1,11 @@
-import React, { useEffect } from "react";
+import React, { useEffect, useState } from "react";
 import { useNavigate, useLocation } from "react-router-dom";
 import styles from "../../Styles/pages/home/Home.module.css";
+import { Building, CalendarDays, ComputerIcon, Image } from "lucide-react";
 
 const Index = () => {
   const navigate = useNavigate();
-
+  const [nav, setNav] = useState("Infrastructure");
   const { pathname } = useLocation();
   useEffect(() => {
     window.scrollTo(0, 0);
@@ -24,7 +25,7 @@ const Index = () => {
             programme in Computer Engineering started in the year 2011-2012.
           </p>
 
-          <button onClick={() => navigate("/signup")}>Register Now</button>
+          <button onClick={() => navigate("/signup")}>ERP Login</button>
         </div>
         <div className={styles.right_container}>
           <img src="/images/home/home-hero.svg" alt="Home_Hero_Image" />
@@ -37,38 +38,72 @@ const Index = () => {
         </h2>
         <div className={styles.horizontal_row}></div>
         <p>
-          Jetpack Compose is a modern toolkit for Android that simplifies UI
-          progress. It is currently in use by countless apps around the world,
-          including Twitter, Airbnb, and Google Play; even if you're not, now is
-          a great time to get started. We're introducing Compose Camp, a series
-          of in-person and virtual sessions where you can discover how to build
-          Android apps with Jetpack Compose along with your friends, to make the
-          learning process of Compose even easier. Scoop up your "camping gear"
-          and check out how you can take part in this event ASAP!🏋️
+          The department continuously works on improving our teaching learning
+          process to better meet the needs of today’s students and employers.
+          Many of the courses have laboratory components that enrich the
+          students’ learning experience by allowing them to be exposed to theory
+          and practice. We strive to provide our students with an outstanding
+          educational experience that prepares them for the highest personal and
+          professional achievements.The department has fully equipped
+          laboratories supervised by experienced, qualified staff, with latest
+          configured machines. Department of Computer Engineering has achieved
+          2016 GPU Education Center award From NVIDIA.
         </p>
         <img src="/images/home/android-jetpack.png" alt="" />
         <button onClick={() => navigate("/signup")}>
-          <i className="uil uil-bell"></i> Register For Event
+          <i className="uil uil-bell"></i> Know More
         </button>
       </div>
 
       <div className={styles.join}>
-        <img src="/images/gdsc-logo.gif" alt="" />
-        <div>
-          <h3>Join GDSC PES MCOE 2022</h3>
-          <h4>
-            <span className={styles.red}>Hello</span>{" "}
-            <span className={styles.blue}>there,</span>{" "}
-          </h4>
-          <p>
-            Plan out your plans for developing Android apps📱 and learn the
-            fundamentals of Android app development! GDSC is here with an
-            amazing Android Compose Camp, which is organised by the community to
-            enrich our code monkeys' coding experience! So, what are you still
-            waiting for?✨✨
-          </p>
-          <button onClick={() => navigate("/contact")}>Join Now</button>
+        <div className={styles.left_join}>
+          <ul className={styles.left_nav}>
+            <div
+              onClick={() => setNav("Infrastructure")}
+              className={
+                nav === "Infrastructure"
+                  ? `${styles.nav} ${styles.activeNav}`
+                  : `${styles.nav}`
+              }
+            >
+              <Building />
+              <li>Infrastructure</li>
+            </div>
+            <div
+              onClick={() => setNav("Academic Calendar")}
+              className={
+                nav === "Academic Calendar"
+                  ? `${styles.nav} ${styles.activeNav}`
+                  : `${styles.nav}`
+              }
+            >
+              <CalendarDays /> <li>Academic Calendar</li>
+            </div>
+            <div
+              onClick={() => setNav("Lab Details")}
+              className={
+                nav === "Lab Details"
+                  ? `${styles.nav} ${styles.activeNav}`
+                  : `${styles.nav}`
+              }
+            >
+              <ComputerIcon />
+              <li>Lab Details</li>
+            </div>
+            <div
+              onClick={() => setNav("Photos")}
+              className={
+                nav === "Photos"
+                  ? `${styles.nav} ${styles.activeNav}`
+                  : `${styles.nav}`
+              }
+            >
+              <Image />
+              <li>Photos</li>
+            </div>
+          </ul>
         </div>
+        <div className={styles.right_join}>Right</div>
       </div>
 
       <div>
