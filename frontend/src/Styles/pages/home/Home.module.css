@@ -54,34 +54,40 @@
 /* Join */
 .join {
   display: flex;
-  align-items: center;
-  justify-content: center;
+}
+.left_join {
+  padding: 20px 20px 20px 40px;
   background: #ececec73;
-  padding: 0px 8rem;
+  width: 300px;
+  border-right: 1px solid #222222;
 }
-
-.join h3 {
-  color: #373737;
-  font-size: 2rem;
-  font-weight: 400;
-  margin-bottom: 20px;
+.left_join .left_nav {
+  display: flex;
+  font-size: 18px;
+  flex-direction: column;
+  gap: 10px;
 }
-
-.join h4 {
-  font-size: 1.3rem;
-  font-weight: 400;
-  letter-spacing: 0.8px;
+.left_nav .nav {
+  cursor: pointer;
+  padding: 8px 10px;
+  border-radius: 5px;
+  transition: all 0.3s ease-in-out;
 }
-
-.join p {
-  font-size: 15px;
-  color: #333;
-  font-weight: 300;
-  line-height: 22px;
-  letter-spacing: 0.5px;
-  margin-top: 15px;
+.left_nav .nav:hover {
+  color: white;
+  /* font-weight: bold; */
+  background-color: var(--blue);
 }
-
+.nav {
+  display: flex;
+  align-items: center;
+  gap: 5px;
+}
+.activeNav {
+  color: white;
+  font-weight: bold;
+  background-color: var(--blue);
+}
 /* About */
 .about {
   padding: 80px 5rem;

@@ -1,20 +1,19 @@
-import React, { useEffect, useState } from 'react';
-import { useLocation } from 'react-router-dom';
-import Dialog from '../../Components/Dialog';
-import Spinner from '../../Components/Spinner';
-import styles from '../../Styles/pages/signup/Signup.module.css';
+import React, { useEffect, useState } from "react";
+import { useLocation } from "react-router-dom";
+import Dialog from "../../Components/Dialog";
+import Spinner from "../../Components/Spinner";
+import styles from "../../Styles/pages/signup/Signup.module.css";
 
 const Index = () => {
-  const [error, setError] = useState('');
+  const [error, setError] = useState("");
   const [showError, setShowError] = useState(false);
-
-  const [message, setMessage] = useState('');
+  const [message, setMessage] = useState("");
 
   const [openDialog, setOpenDialog] = useState(false);
 
   const [disableSignup, setDisableSignup] = useState(false);
 
-  const [email, setEmail] = useState('');
+  const [email, setEmail] = useState("");
 
   const { pathname } = useLocation();
   useEffect(() => {
@@ -24,13 +23,13 @@ const Index = () => {
   const handleSendEmail = async () => {
     setDisableSignup(true);
     setShowError(false);
-    setError('');
-    setMessage('');
+    setError("");
+    setMessage("");
 
     const response = await fetch(`/api/users/forget`, {
-      method: 'POST',
+      method: "POST",
       headers: {
-        'Content-Type': 'application/json',
+        "Content-Type": "application/json",
       },
       body: JSON.stringify({ email }),
     });
@@ -49,20 +48,20 @@ const Index = () => {
   };
 
   return (
-    <div style={{ marginBottom: '150px' }}>
+    <div style={{ marginBottom: "150px" }}>
       <h2
         style={{
-          textAlign: 'center',
-          marginTop: '180px',
-          fontWeight: '400',
-          color: '#333',
-          fontSize: '25px',
+          textAlign: "center",
+          marginTop: "180px",
+          fontWeight: "400",
+          color: "#333",
+          fontSize: "25px",
         }}
       >
         Forgot Password
       </h2>
-      <div className={styles.container} style={{ marginTop: '-40px' }}>
-        <div className={styles.form} style={{ marginTop: '90px' }}>
+      <div className={styles.container} style={{ marginTop: "-40px" }}>
+        <div className={styles.form} style={{ marginTop: "90px" }}>
           <div>
             <div className={styles.field}>
               <b>Email *</b>
@@ -89,7 +88,7 @@ const Index = () => {
               {message}
               <i
                 class="uil uil-times-circle"
-                onClick={() => setMessage('')}
+                onClick={() => setMessage("")}
               ></i>
             </div>
           )}
@@ -97,15 +96,15 @@ const Index = () => {
           <button
             onClick={handleSendEmail}
             disabled={disableSignup}
-            className={disableSignup ? styles.disabled : ''}
+            className={disableSignup ? styles.disabled : ""}
           >
             {disableSignup ? (
               <>
-                {' '}
+                {" "}
                 Sending email <Spinner />
               </>
             ) : (
-              'Send Link'
+              "Send Link"
             )}
           </button>
         </div>
@@ -114,7 +113,7 @@ const Index = () => {
       <Dialog
         openDialog={openDialog}
         setOpenDialog={setOpenDialog}
-        title={'Email Sent Successfully!'}
+        title={"Email Sent Successfully!"}
         children={
           <div>
             <p>{message}. Please check you email to reset your password!</p>

@@ -96,7 +96,11 @@ const Layout = ({ children }) => {
       {children}
 
       <footer className={styles.footer}>
-        <img src="/images/logo.svg" alt="GDSC-PESMCOE-LOGO" />
+        <img
+          style={{ width: "400px" }}
+          src="/images/Logo.png"
+          alt="Comp Dept PESMCOE"
+        />
         <div>
           <h3>Quick Links</h3>
           <ul>
@@ -115,11 +119,6 @@ const Layout = ({ children }) => {
                 <Link to="/team">Team</Link>
               </span>
             </li>
-            {/* <li>
-              <span>
-                <Link to="/quiz">Quiz</Li>
-              </span>
-            </li> */}
             <li>
               <span>
                 <Link to="/contact">Contact</Link>
@@ -131,36 +130,9 @@ const Layout = ({ children }) => {
               </span>
             </li>
           </ul>
-          <h3>Socials</h3>
-          <div className={styles.socials}>
-            <div className={styles.social}>
-              <Link
-                to="https://www.instagram.com/gdsc_pesmcoe/"
-                target="_blank"
-              >
-                <i className="uil uil-instagram"></i>
-              </Link>
-            </div>
-            <div className={styles.social}>
-              <Link
-                to="https://www.linkedin.com/company/gdsc-pesmcoe/"
-                target="_blank"
-              >
-                <i className="uil uil-linkedin-alt"></i>
-              </Link>
-            </div>
-            <div className={styles.social}>
-              <Link
-                to="https://twitter.com/gdsc_pesmcoe?s=20&t=AXGA6MhC0e3y8NOBkUOjHA"
-                target="_blank"
-              >
-                <i className="uil uil-twitter-alt"></i>
-              </Link>
-            </div>
-          </div>
         </div>
         <p>
-          <i className="uil uil-copyright"></i> GDSC-PES MCOE
+          <i className="uil uil-copyright"></i> Comp Dept. PESMCOE
         </p>
       </footer>
     </div>

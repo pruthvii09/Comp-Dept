@@ -1,22 +1,21 @@
-import React, { useEffect, useState } from 'react';
-import { Link, useLocation } from 'react-router-dom';
-import Dialog from '../../Components/Dialog';
-import Header from '../../Components/Header';
-import Spinner from '../../Components/Spinner';
-import { useUserContext } from '../../hooks/useUserContext';
-import styles from '../../Styles/pages/signup/Signup.module.css';
+import React, { useEffect, useState } from "react";
+import { Link, useLocation } from "react-router-dom";
+import Dialog from "../../Components/Dialog";
+import Header from "../../Components/Header";
+import Spinner from "../../Components/Spinner";
+import { useUserContext } from "../../hooks/useUserContext";
+import styles from "../../Styles/pages/signup/Signup.module.css";
 
 const Index = () => {
   const { dispatch } = useUserContext();
 
   const [data, setData] = useState({
-    name: '',
-    email: '',
-    contact: '',
-    college: '',
-    year: '',
-    password: '',
-    quizCategory: [],
+    name: "",
+    email: "",
+    contact: "",
+    erp_id: "",
+    year: "",
+    password: "",
   });
 
   const [openDialog, setOpenDialog] = useState(false);
@@ -26,81 +25,65 @@ const Index = () => {
   const [disableSignup, setDisableSignup] = useState(false);
 
   const [emptyFields, setEmptyFields] = useState([]);
-  const [error, setError] = useState('');
+  const [error, setError] = useState("");
   const [showError, setShowError] = useState(false);
 
   const { pathname } = useLocation();
   useEffect(() => {
     window.scrollTo(0, 0);
   }, [pathname]);
-
-  const handleCategory = (e) => {
-    const { value, checked } = e.target;
-
-    checked
-      ? setData({ ...data, quizCategory: [...data.quizCategory, value] })
-      : setData({
-          ...data,
-          quizCategory: data.quizCategory.filter((cat) => cat !== value),
-        });
-  };
-
   const handleSignUp = async () => {
     setDisableSignup(true);
     setShowError(false);
-    setError('');
+    setError("");
     setEmptyFields([]);
 
     if (data?.name?.length < 5) {
-      setError('Name must be at least 5 characters long!');
+      setError("Name must be at least 5 characters long!");
       setShowError(true);
-      setEmptyFields([...emptyFields, 'name']);
+      setEmptyFields([...emptyFields, "name"]);
     } else if (data?.email?.length <= 0) {
-      setEmptyFields((emptyFields) => [...emptyFields, 'email']);
-      setError('Please enter email!');
+      setEmptyFields((emptyFields) => [...emptyFields, "email"]);
+      setError("Please enter email!");
       setShowError(true);
     } else if (data?.contact?.length !== 10) {
-      setEmptyFields((emptyFields) => [...emptyFields, 'contact']);
-      setError('Contact number must be at exacty 10 digits long!');
+      setEmptyFields((emptyFields) => [...emptyFields, "contact"]);
+      setError("Contact number must be at exacty 10 digits long!");
       setShowError(true);
-    } else if (data?.college?.length <= 0) {
-      setError('Please enter college name!');
+    } else if (data?.erp_id?.length <= 0) {
+      setError("Please enter ERP ID!");
       setShowError(true);
-      setEmptyFields((emptyFields) => [...emptyFields, 'college']);
+      setEmptyFields((emptyFields) => [...emptyFields, "erp_id"]);
     } else if (data?.year?.length <= 0) {
-      setError('Please select year!');
+      setError("Please select year!");
       setShowError(true);
-      setEmptyFields((emptyFields) => [...emptyFields, 'year']);
+      setEmptyFields((emptyFields) => [...emptyFields, "year"]);
     } else if (data?.password?.length <= 0) {
-      setEmptyFields((emptyFields) => [...emptyFields, 'password']);
-      setError('Please enter password!');
-      setShowError(true);
-    } else if (!data?.quizCategory?.length >= 1) {
-      setError('Please select at one catgory for quiz!');
+      setEmptyFields((emptyFields) => [...emptyFields, "password"]);
+      setError("Please enter password!");
       setShowError(true);
     } else {
       console.log(process.env.REACT_APP_BACKEND_URI);
       const response = await fetch(`/api/users/signup`, {
-        method: 'POST',
+        method: "POST",
         headers: {
-          'Content-Type': 'application/json',
+          "Content-Type": "application/json",
         },
         body: JSON.stringify({ ...data }),
       });
       const json = await response.json();
       if (response.ok) {
-        localStorage.setItem('user', JSON.stringify(json));
+        localStorage.setItem("user", JSON.stringify(json));
         setData({
-          name: '',
-          email: '',
-          contact: '',
-          college: '',
-          year: '',
-          password: '',
-          quizCategory: [],
+          name: "",
+          email: "",
+          contact: "",
+          erp_id: "",
+          year: "",
+          password: "",
         });
         setTimeout(() => {
-          dispatch({ type: 'LOGIN', payload: json });
+          dispatch({ type: "LOGIN", payload: json });
         }, 2000);
         setOpenDialog(true);
       }
@@ -140,7 +123,7 @@ const Index = () => {
                 value={data?.name}
                 onChange={(e) => setData({ ...data, name: e.target.value })}
                 className={
-                  emptyFields?.includes('name') ? styles.error_field : ''
+                  emptyFields?.includes("name") ? styles.error_field : ""
                 }
               />
             </div>
@@ -152,7 +135,7 @@ const Index = () => {
                 value={data?.email}
                 onChange={(e) => setData({ ...data, email: e.target.value })}
                 className={
-                  emptyFields?.includes('email') ? styles.error_field : ''
+                  emptyFields?.includes("email") ? styles.error_field : ""
                 }
               />
             </div>
@@ -164,19 +147,19 @@ const Index = () => {
                 value={data?.contact}
                 onChange={(e) => setData({ ...data, contact: e.target.value })}
                 className={
-                  emptyFields?.includes('contact') ? styles.error_field : ''
+                  emptyFields?.includes("contact") ? styles.error_field : ""
                 }
               />
             </div>
             <div className={styles.field}>
-              <b>College Name *</b>
+              <b>ERP ID *</b>
               <input
                 type="text"
-                placeholder="Enter your college name"
-                value={data?.college}
-                onChange={(e) => setData({ ...data, college: e.target.value })}
+                placeholder="Enter your ERP ID"
+                value={data?.erp_id}
+                onChange={(e) => setData({ ...data, erp_id: e.target.value })}
                 className={
-                  emptyFields?.includes('college') ? styles.error_field : ''
+                  emptyFields?.includes("erp_id") ? styles.error_field : ""
                 }
               />
             </div>
@@ -185,7 +168,7 @@ const Index = () => {
               <select
                 onChange={(e) => setData({ ...data, year: e.target.value })}
                 className={
-                  emptyFields?.includes('email') ? styles.error_field : ''
+                  emptyFields?.includes("email") ? styles.error_field : ""
                 }
               >
                 <option value="" disabled={true} selected={true}>
@@ -200,12 +183,12 @@ const Index = () => {
             <div className={`${styles.field} ${styles.password_field}`}>
               <b>Password *</b>
               <input
-                type={showPassword ? 'text' : 'password'}
+                type={showPassword ? "text" : "password"}
                 placeholder="Enter password"
                 value={data?.password}
                 onChange={(e) => setData({ ...data, password: e.target.value })}
                 className={
-                  emptyFields?.includes('email') ? styles.error_field : ''
+                  emptyFields?.includes("email") ? styles.error_field : ""
                 }
               />
               {showPassword ? (
@@ -220,79 +203,6 @@ const Index = () => {
                 ></i>
               )}
             </div>
-            <div
-              className={`${styles.field} ${styles.quiz_categories}`}
-              style={{ border: '1px solid #c5c5c5', padding: '12px' }}
-            >
-              <p>
-                <span>Select quizzes category</span>
-              </p>
-              <p>Non Tech</p>
-              <div className={styles.single_category}>
-                <label>
-                  <input
-                    type="checkbox"
-                    value="Marvel universe"
-                    onChange={handleCategory}
-                  />{' '}
-                  Marvel universe
-                </label>
-                <label>
-                  <input
-                    type="checkbox"
-                    value="Friends show"
-                    onChange={handleCategory}
-                  />{' '}
-                  Friends show
-                </label>
-              </div>
-              <div className={styles.single_category}>
-                <label>
-                  <input
-                    type="checkbox"
-                    value="English OTT"
-                    onChange={handleCategory}
-                  />{' '}
-                  English OTT
-                </label>
-                <label>
-                  <input
-                    type="checkbox"
-                    value="Hindi OTT"
-                    onChange={handleCategory}
-                  />{' '}
-                  Hindi OTT
-                </label>
-              </div>
-              <label>
-                <input
-                  type="checkbox"
-                  value="Harry Potter"
-                  onChange={handleCategory}
-                />{' '}
-                Harry Potter
-              </label>
-              <br />
-              <p>Tech</p>
-              <div className={styles.single_category}>
-                <label>
-                  <input
-                    type="checkbox"
-                    value="Android"
-                    onChange={handleCategory}
-                  />{' '}
-                  Android
-                </label>
-                <label>
-                  <input
-                    type="checkbox"
-                    value="Google and Web3"
-                    onChange={handleCategory}
-                  />{' '}
-                  Google and Web3
-                </label>
-              </div>
-            </div>
           </div>
           {showError && (
             <div className={styles.error}>
@@ -306,21 +216,21 @@ const Index = () => {
           <button
             onClick={handleSignUp}
             disabled={disableSignup}
-            className={disableSignup ? styles.disabled : ''}
+            className={disableSignup ? styles.disabled : ""}
           >
             {disableSignup ? (
               <>
-                {' '}
+                {" "}
                 Loading <Spinner />
               </>
             ) : (
-              'Signup'
+              "Signup"
             )}
           </button>
           <p>
             Already have and account? <Link to="/login"> Click here!</Link>
           </p>
-          <p style={{ marginTop: '5px' }}>
+          <p style={{ marginTop: "5px" }}>
             Forgot your password? <Link to="/forgot"> Click here!</Link>
           </p>
         </div>
@@ -329,12 +239,12 @@ const Index = () => {
       <Dialog
         openDialog={openDialog}
         setOpenDialog={setOpenDialog}
-        title={'Registration Successful!'}
+        title={"Registration Successful!"}
         children={
           <div>
             <p>Thank you for Android Compose Camp 2022 registration!</p>
             <button className={styles.button}>
-              <Link to="/profile" style={{ color: 'white' }}>
+              <Link to="/profile" style={{ color: "white" }}>
                 Profile
               </Link>
             </button>
