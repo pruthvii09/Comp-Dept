@@ -10,16 +10,8 @@
   text-align: center;
 }
 
-.blue {
-  color: var(--blue) !important;
-}
-
-.green {
-  color: var(--green) !important;
-}
-
-.red {
-  color: var(--red) !important;
+.club{
+  color: #333;
 }
 
 .container p {
@@ -55,6 +47,9 @@
   color: #333;
   margin: 30px 10px;
   font-size: 40px;
+}
+.events_container h1{
+  color: #333;
 }
 
 .events_container .horizontal_row {
