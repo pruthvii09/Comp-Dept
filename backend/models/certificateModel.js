@@ -1,21 +1,13 @@
 const mongoose = require("mongoose");
 const Schema = mongoose.Schema;
-const userSchema = new Schema(
+
+const certificateSchema = new Schema(
   {
-    email: {
-      type: String,
-      required: true,
-      unique: true,
-    },
     name: {
       type: String,
       required: true,
     },
-    contact: {
-      type: String,
-      required: true,
-    },
-    erp_id: {
+    month: {
       type: String,
       required: true,
     },
@@ -23,7 +15,7 @@ const userSchema = new Schema(
       type: String,
       required: true,
     },
-    password: {
+    prn: {
       type: String,
       required: true,
     },
@@ -33,4 +25,4 @@ const userSchema = new Schema(
   }
 );
 
-module.exports = mongoose.model("User", userSchema);
+module.exports = mongoose.model("Certificate", certificateSchema);

@@ -1,5 +1,5 @@
-const Score = require('../models/scoreModel');
-const User = require('../models/userModel');
+const Score = require("../models/scoreModel");
+const User = require("../models/userModel");
 
 const getScoreByCategory = async (req, res) => {
   const { category } = req.params;
@@ -33,7 +33,7 @@ const getScoreByCategory = async (req, res) => {
 
     return res.status(200).json(sortedByScore);
   }
-  res.status(400).json({ error: 'Could not find score!' });
+  res.status(400).json({ error: "Could not find score!" });
 };
 
 // Add score
@@ -64,7 +64,7 @@ const addScoreByCategory = async (req, res) => {
     });
   }
 
-  res.status(400).json({ error: 'error occured' });
+  res.status(400).json({ error: "error occured" });
 };
 
 const checkExamAlreadyGive = async (req, res) => {
@@ -74,19 +74,13 @@ const checkExamAlreadyGive = async (req, res) => {
   const containCategory = await User.findOne({ _id: id });
 
   if (containCategory) {
-    if (containCategory.quizCategory.includes(category)) {
-      const user = await Score.findOne({ category: category }).select({
-        attende: { $elemMatch: { id: id } },
-      });
+    const user = await Score.findOne({ category: category }).select({
+      attende: { $elemMatch: { id: id } },
+    });
 
-      if (user?.attende?.length <= 0) {
-        return res.status(200).json({ message: 'You can give exam' });
-      }
-      return res
-        .status(400)
-        .json({ error: 'You have alreday attempted for exam!' });
+    if (user?.attende?.length <= 0) {
+      return res.status(200).json({ message: "You can give exam" });
     }
-    res.status(400).json({ error: "You haven't registered for this category" });
   }
 };
 
@@ -97,12 +91,12 @@ const checkLive = async (req, res) => {
   const check = await Score.findOne({ category: category, live: true });
 
   if (check) {
-    return res.status(200).json({ message: 'Quiz is live now!' });
+    return res.status(200).json({ message: "Quiz is live now!" });
   }
 
   res.status(400).json({
-    error: 'Quiz is not live yet!',
-    p: 'Please wait till quizzes goes live!',
+    error: "Quiz is not live yet!",
+    p: "Please wait till quizzes goes live!",
   });
 };
 
@@ -111,14 +105,14 @@ const getPassword = async (req, res) => {
   const { category } = req.params;
 
   const password = await Score.findOne({ category: category }).select(
-    'password'
+    "password"
   );
 
   if (password) {
     return res.status(200).json(password.password);
   }
 
-  res.status(400).json({ error: 'Could not find password' });
+  res.status(400).json({ error: "Could not find password" });
 };
 
 // add new category
@@ -133,10 +127,10 @@ const addCategory = async (req, res) => {
   });
 
   if (newCategory) {
-    return res.status(200).json({ message: 'Category added!' });
+    return res.status(200).json({ message: "Category added!" });
   }
 
-  res.status(400).send({ message: 'Could not add category' });
+  res.status(400).send({ message: "Could not add category" });
 };
 
 module.exports = {

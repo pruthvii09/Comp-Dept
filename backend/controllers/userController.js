@@ -1,48 +1,35 @@
-const bcrypt = require('bcrypt');
-const jwt = require('jsonwebtoken');
-const nodemailer = require('nodemailer');
-const User = require('../models/userModel');
+const bcrypt = require("bcrypt");
+const jwt = require("jsonwebtoken");
+const nodemailer = require("nodemailer");
+const User = require("../models/userModel");
 
 // Create JWT
 const createToken = (_id) => {
   return jwt.sign({ _id }, process.env.JWT_SECRET, {
-    expiresIn: '3d',
+    expiresIn: "3d",
   });
 };
 
 // User signup
 const signup = async (req, res) => {
-  const { email, name, contact, college, year, password, quizCategory } =
-    req.body;
+  const { email, name, contact, erp_id, year, password } = req.body;
 
   try {
     const exist = await User.findOne({ email });
 
     if (exist) {
-      return res.status(400).json({ error: 'Email already exist!' });
+      return res.status(400).json({ error: "Email already exist!" });
     }
 
     const salt = await bcrypt.genSalt(10);
     const hash = await bcrypt.hash(password, salt);
-
-    const scores = [];
-    quizCategory.map((category) =>
-      scores.push({
-        category: category,
-        caregoryScore: 0,
-        submitted: false,
-      })
-    );
-
     const user = await User.create({
       email,
       name,
       contact,
-      college,
+      erp_id,
       year,
       password: hash,
-      quizCategory,
-      score: scores,
     });
 
     const token = createToken(user._id);
@@ -61,13 +48,13 @@ const login = async (req, res) => {
     const user = await User.findOne({ email });
 
     if (!user) {
-      return res.status(400).json({ error: 'Incorrect email!' });
+      return res.status(400).json({ error: "Incorrect email!" });
     }
 
     const match = await bcrypt.compare(password, user.password);
 
     if (!match) {
-      return res.status(400).json({ error: 'Incorrect password!' });
+      return res.status(400).json({ error: "Incorrect password!" });
     }
 
     const token = createToken(user._id);
@@ -86,18 +73,15 @@ const getSingleProfile = async (req, res) => {
 
   try {
     const user = await User.findById(id).select(
-      'email name contact college year quizCategory'
+      "email name contact erp_id year quizCategory"
     );
-
     if (!user) {
-      return res.status(400).json({ error: 'Could not found user' });
+      return res.status(400).json({ error: "Could not found user" });
     }
-
     if (req.user._id.toString() === id) {
       return res.status(200).json(user);
     }
-
-    res.status(400).json({ error: 'Could not found user' });
+    res.status(400).json({ error: "Could not found user" });
   } catch (error) {
     res.status(400).json({ error: error.message });
   }
@@ -113,11 +97,11 @@ const forgetPassword = async (req, res) => {
     if (!user) {
       res
         .status(400)
-        .json({ error: 'There is no account registered with this email!' });
+        .json({ error: "There is no account registered with this email!" });
     }
 
     const mailTransporter = nodemailer.createTransport({
-      service: 'gmail',
+      service: "gmail",
       auth: {
         user: process.env.EMAIL,
         pass: process.env.PASSWORD,
@@ -127,7 +111,7 @@ const forgetPassword = async (req, res) => {
     const mailDetails = {
       from: process.env.EMAIL,
       to: email,
-      subject: 'Password Reset Request',
+      subject: "Password Reset Request",
       html: `<p>Hello <b><i>${user.name}</i></b><br/> 
       Follow this link to reset your password for GDSC PES MCOE Android Compose Camp's account!
       <a href="https://gdsc-pesmcoe.vercel.app/forgot/${user._id}">Click here to reset password!</a><br/>If you didn't ask to reset your password, you can ignore this email.<br/>Regards,<br/><b>GDSC PES MCOE.</b>
@@ -138,7 +122,7 @@ const forgetPassword = async (req, res) => {
       if (err) {
         res.status(400).json({ error: err });
       } else {
-        res.status(200).json({ message: 'Email send!!' });
+        res.status(200).json({ message: "Email send!!" });
       }
     });
   } catch (error) {
@@ -163,9 +147,9 @@ const updatePassword = async (req, res) => {
     );
 
     if (!user) {
-      return res.status(400).json({ error: 'Could not change password!' });
+      return res.status(400).json({ error: "Could not change password!" });
     }
-    res.status(200).json({ message: 'Password changed successfully!' });
+    res.status(200).json({ message: "Password changed successfully!" });
   } catch (error) {
     res.status(400).json({ error: error.message });
   }
@@ -183,7 +167,7 @@ const addScoreForQuizCategory = async (req, res) => {
       const user = await User.findById(id);
       // console.log(user);
 
-      res.status(400).json({ error: 'Not selected category' });
+      res.status(400).json({ error: "Not selected category" });
     }
   } catch (error) {}
 

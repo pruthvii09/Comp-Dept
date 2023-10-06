@@ -1,5 +1,5 @@
-.home {
-}
+/* .home {
+} */
 
 .container {
   display: flex;
@@ -27,8 +27,8 @@
 }
 
 /* Left contaier */
-.left_container {
-}
+/* .left_container {
+} */
 
 .left_container h1 {
   font-size: 5rem;
@@ -44,8 +44,8 @@
 }
 
 /* Right container */
-.right_container {
-}
+/* .right_container {
+} */
 
 .right_container img {
   width: 550px;
@@ -54,6 +54,7 @@
 /* Join */
 .join {
   display: flex;
+  margin-bottom: 50px;
 }
 .left_join {
   padding: 20px 20px 20px 40px;
@@ -87,6 +88,28 @@
   color: white;
   font-weight: bold;
   background-color: var(--blue);
+}
+.right_join {
+  flex: 1;
+  margin-top: 25px;
+  height: 100vh;
+  overflow: auto;
+  display: flex;
+  flex-direction: column;
+  gap: 15px;
+  align-items: center;
+  justify-content: center;
+}
+.labContainer {
+  padding: 10px 20px;
+  background-color: #ececec73;
+  border-radius: 5px;
+  display: flex;
+  gap: 15px;
+  align-items: start;
+}
+.labContainer img {
+  width: 250px;
 }
 /* About */
 .about {

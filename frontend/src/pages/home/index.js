@@ -49,7 +49,11 @@ const Index = () => {
           configured machines. Department of Computer Engineering has achieved
           2016 GPU Education Center award From NVIDIA.
         </p>
-        <img src="/images/home/android-jetpack.png" alt="" />
+        <img
+          style={{ borderRadius: "5px" }}
+          src="/images/photos/sl1.jpg"
+          alt=""
+        />
         <button onClick={() => navigate("/signup")}>
           <i className="uil uil-bell"></i> Know More
         </button>
@@ -103,7 +107,7 @@ const Index = () => {
             </div>
           </ul>
         </div>
-        <div className={styles.right_join}>Right</div>
+        <div className={styles.right_join}>right</div>
       </div>
 
       <div>

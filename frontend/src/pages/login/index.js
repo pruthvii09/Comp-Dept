@@ -1,17 +1,17 @@
-import React, { useEffect, useState } from 'react';
-import { Link, useLocation } from 'react-router-dom';
-import Dialog from '../../Components/Dialog';
-import Header from '../../Components/Header';
-import Spinner from '../../Components/Spinner';
-import { useUserContext } from '../../hooks/useUserContext';
-import styles from '../../Styles/pages/signup/Signup.module.css';
+import React, { useEffect, useState } from "react";
+import { Link, useLocation } from "react-router-dom";
+import Dialog from "../../Components/Dialog";
+import Header from "../../Components/Header";
+import Spinner from "../../Components/Spinner";
+import { useUserContext } from "../../hooks/useUserContext";
+import styles from "../../Styles/pages/signup/Signup.module.css";
 
 const Index = () => {
   const { dispatch } = useUserContext();
 
   const [data, setData] = useState({
-    email: '',
-    password: '',
+    email: "",
+    password: "",
   });
 
   const [openDialog, setOpenDialog] = useState(false);
@@ -21,7 +21,7 @@ const Index = () => {
   const [disableSignup, setDisableSignup] = useState(false);
 
   const [emptyFields, setEmptyFields] = useState([]);
-  const [error, setError] = useState('');
+  const [error, setError] = useState("");
   const [showError, setShowError] = useState(false);
 
   const { pathname } = useLocation();
@@ -34,34 +34,34 @@ const Index = () => {
 
     setDisableSignup(true);
     setShowError(false);
-    setError('');
+    setError("");
     setEmptyFields([]);
 
     if (data?.email?.length <= 0) {
-      setEmptyFields((emptyFields) => [...emptyFields, 'email']);
-      setError('Please enter email!');
+      setEmptyFields((emptyFields) => [...emptyFields, "email"]);
+      setError("Please enter email!");
       setShowError(true);
     } else if (data?.password?.length <= 0) {
-      setEmptyFields((emptyFields) => [...emptyFields, 'password']);
-      setError('Please enter password!');
+      setEmptyFields((emptyFields) => [...emptyFields, "password"]);
+      setError("Please enter password!");
       setShowError(true);
     } else {
-      const response = await fetch(`/api/users/login`, {
-        method: 'POST',
+      const response = await fetch(`http://localhost:4000/api/users/login`, {
+        method: "POST",
         headers: {
-          'Content-Type': 'application/json',
+          "Content-Type": "application/json",
         },
         body: JSON.stringify({ ...data }),
       });
       const json = await response.json();
       if (response.ok) {
-        localStorage.setItem('user', JSON.stringify(json));
+        localStorage.setItem("user", JSON.stringify(json));
         setData({
-          email: '',
-          password: '',
+          email: "",
+          password: "",
         });
         setTimeout(() => {
-          dispatch({ type: 'LOGIN', payload: json });
+          dispatch({ type: "LOGIN", payload: json });
         }, 2000);
         setOpenDialog(true);
       }
@@ -90,7 +90,7 @@ const Index = () => {
         <div className={styles.left_container}>
           <img src="/images/home/home-hero.svg" alt="" />
         </div>
-        <div className={styles.form} style={{ marginTop: '90px' }}>
+        <div className={styles.form} style={{ marginTop: "90px" }}>
           <div>
             <div className={styles.field}>
               <b>Email *</b>
@@ -100,19 +100,19 @@ const Index = () => {
                 value={data?.email}
                 onChange={(e) => setData({ ...data, email: e.target.value })}
                 className={
-                  emptyFields?.includes('email') ? styles.error_field : ''
+                  emptyFields?.includes("email") ? styles.error_field : ""
                 }
               />
             </div>
             <div className={`${styles.field} ${styles.password_field}`}>
               <b>Password *</b>
               <input
-                type={showPassword ? 'text' : 'password'}
+                type={showPassword ? "text" : "password"}
                 placeholder="Enter password"
                 value={data?.password}
                 onChange={(e) => setData({ ...data, password: e.target.value })}
                 className={
-                  emptyFields?.includes('email') ? styles.error_field : ''
+                  emptyFields?.includes("email") ? styles.error_field : ""
                 }
               />
               {showPassword ? (
@@ -140,21 +140,21 @@ const Index = () => {
           <button
             onClick={handleSignIn}
             disabled={disableSignup}
-            className={disableSignup ? styles.disabled : ''}
+            className={disableSignup ? styles.disabled : ""}
           >
             {disableSignup ? (
               <>
-                {' '}
+                {" "}
                 Loading <Spinner />
               </>
             ) : (
-              'Login'
+              "Login"
             )}
           </button>
           <p>
             Don't have and account? <Link to="/signup"> Click here!</Link>
           </p>
-          <p style={{ marginTop: '5px' }}>
+          <p style={{ marginTop: "5px" }}>
             Forgot your password? <Link to="/forgot"> Click here!</Link>
           </p>
         </div>
@@ -163,12 +163,12 @@ const Index = () => {
       <Dialog
         openDialog={openDialog}
         setOpenDialog={setOpenDialog}
-        title={'Login Successful!'}
+        title={"Login Successful!"}
         children={
           <div>
             <p>You are logged in to Android Compose Camp 2022 event!</p>
             <button className={styles.button}>
-              <Link to="/profile" style={{ color: 'white' }}>
+              <Link to="/profile" style={{ color: "white" }}>
                 Profile
               </Link>
             </button>
