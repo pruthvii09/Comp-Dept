@@ -242,7 +242,7 @@ const Index = () => {
         title={"Registration Successful!"}
         children={
           <div>
-            <p>Thank you for Android Compose Camp 2022 registration!</p>
+            <p>Thank you for registration!</p>
             <button className={styles.button}>
               <Link to="/profile" style={{ color: "white" }}>
                 Profile

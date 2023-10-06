@@ -11,8 +11,8 @@
   cursor: pointer;
 }
 
-.card::before {
-  content: '';
+/* .card::before {
+  content: "";
   position: absolute;
   left: 0;
   bottom: calc(-100% + 4px);
@@ -20,7 +20,7 @@
   height: 100%;
   z-index: 1;
   transition: 0.3s ease-in-out;
-}
+} */
 
 .card1::before {
   background: var(--blue);
@@ -166,13 +166,13 @@
 }
 
 .card:hover .social_links li a {
-  color: #fff;
+  /* color: #fff; */
   border-radius: 50%;
   align-items: center;
 }
 
 .social_links li a:hover {
-  background: #fff;
+  /* background: #fff; */
   border-radius: 50%;
 }
 

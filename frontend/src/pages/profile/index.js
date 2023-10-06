@@ -1,14 +1,15 @@
-import React, { useEffect } from "react";
+import React, { useEffect, useState } from "react";
 import { Link, useLocation, useNavigate } from "react-router-dom";
 import { useUserContext } from "../../hooks/useUserContext";
 import styles from "../../Styles/pages/profile/Profile.module.css";
+import Dialog from "../../Components/Dialog";
 
 const Index = () => {
   const { user, userData, dispatch } = useUserContext();
-  console.log(userData);
+
   const navigate = useNavigate();
 
-  const { pathname } = useLocation();
+  const [openDialog, setOpenDialog] = useState(false);
   useEffect(() => {
     window.scrollTo(0, 0);
     const fetchData = async () => {
@@ -31,7 +32,7 @@ const Index = () => {
     if (user) {
       fetchData();
     }
-  }, [pathname]);
+  }, []);
 
   return (
     <div className={styles.container}>
@@ -66,24 +67,12 @@ const Index = () => {
             <button onClick={() => navigate("/quiz/survey")}>
               Mid Term Servry
             </button>
-            <button>Certificate Request</button>
+            <button onClick={() => setOpenDialog(true)}>
+              Certificate Request
+            </button>
             <button>Exam Form</button>
             <button>Fees Status</button>
           </div>
-          {/* <div>
-            <h5>Quizzes for the selected categories will be live soon.</h5>
-            <div className={styles.buttons}>
-              {userData?.quizCategory?.map((category) => (
-                <button
-                  key={category}
-                  onClick={() => navigate(`/quiz/${category}`)}
-                >
-                  {category}
-                </button>
-              ))}
-            </div>
-          </div> */}
-
           <div className={styles.horizontal_row}></div>
 
           <p className={styles.contact_line}>
@@ -96,6 +85,21 @@ const Index = () => {
           <h3>Loading....</h3>
         </div>
       )}
+      <Dialog
+        openDialog={openDialog}
+        setOpenDialog={setOpenDialog}
+        title={"Registration Successful!"}
+        children={
+          <div>
+            <p>Thank you for registration!</p>
+            <button className={styles.button}>
+              <Link to="/profile" style={{ color: "white" }}>
+                Profile
+              </Link>
+            </button>
+          </div>
+        }
+      />
     </div>
   );
 };

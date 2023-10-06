@@ -1,18 +1,18 @@
-import React from 'react';
-import styles from '../../Styles/components/TeamMember.module.css';
-import '../../Styles/components/TeamMember.module.css';
+import React from "react";
+import styles from "../../Styles/components/TeamMember.module.css";
+import "../../Styles/components/TeamMember.module.css";
 
 const TeamMember = ({ member }) => {
   return (
     <div
       className={`${styles.card} ${
-        member?.class === 'card1'
+        member?.class === "card1"
           ? styles.card1
-          : member?.class === 'card2'
+          : member?.class === "card2"
           ? styles.card2
-          : member?.class === 'card3'
+          : member?.class === "card3"
           ? styles.card3
-          : member?.class === 'card4'
+          : member?.class === "card4"
           ? styles.card4
           : styles.card5
       }`}
@@ -20,13 +20,13 @@ const TeamMember = ({ member }) => {
       <div>
         <div
           className={`${styles.card_image} ${
-            member?.class === 'card1'
+            member?.class === "card1"
               ? styles.card_image1
-              : member?.class === 'card2'
+              : member?.class === "card2"
               ? styles.card_image2
-              : member?.class === 'card3'
+              : member?.class === "card3"
               ? styles.card_image3
-              : member?.class === 'card4'
+              : member?.class === "card4"
               ? styles.card_image4
               : styles.card_image5
           }`}
@@ -35,19 +35,23 @@ const TeamMember = ({ member }) => {
         </div>
 
         <div className={styles.card_body}>
-          <h3 className={styles.name}>{member?.name}</h3>
-          <h4 className={styles.position}>{member?.position}</h4>
+          <h3 style={{ color: "black" }} className={styles.name}>
+            {member?.name}
+          </h3>
+          <h4 style={{ color: "gray" }} className={styles.position}>
+            {member?.position}
+          </h4>
 
           <ul
             className={`${styles.social_links} 
             ${
-              member?.class === 'card1'
+              member?.class === "card1"
                 ? styles.social_links1
-                : member?.class === 'card2'
+                : member?.class === "card2"
                 ? styles.social_links2
-                : member?.class === 'card3'
+                : member?.class === "card3"
                 ? styles.social_links3
-                : member?.class === 'card4'
+                : member?.class === "card4"
                 ? styles.social_links4
                 : styles.social_links5
             }
