@@ -55,7 +55,7 @@ const Index = () => {
           alt=""
         />
         <button onClick={() => navigate("/signup")}>
-          <i className="uil uil-bell"></i> Know More
+          <i className="uil uil-bell"></i> ERP Login
         </button>
       </div>
 

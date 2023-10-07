@@ -9,7 +9,7 @@ const Index = () => {
     {
       id: 1,
       image:
-        "https://firebasestorage.googleapis.com/v0/b/gdsc-pesmcoe-2022.appspot.com/o/events%2Fandroid-compose-camp-event.png?alt=media&token=9e33449a-2253-4731-8cdf-9dfdb323a67e",
+        "images/photos/upcomingbrain.jpeg",
       name: "Android Compose Camp",
       paragraphs: [
         "Compose Camps are community-organized events that teach people how to create Android apps 📱 with Jetpack Compose. Join us now!! This is your time to shine! Get hands- on experience on technologies from Google and excel in your expertise with this event🎉✨",
@@ -51,7 +51,7 @@ const Index = () => {
     {
       id: 1,
       image:
-        "https://firebasestorage.googleapis.com/v0/b/gdsc-pesmcoe-2022.appspot.com/o/events%2Fandroid-compose-camp-event.png?alt=media&token=9e33449a-2253-4731-8cdf-9dfdb323a67e",
+        "images/photos/upcomingbrain.jpeg",
       name: "Seminar on Resume Building",
       paragraphs: [
       "Seminars enhance learning, critical thinking, and communication skills while offering opportunities for networking and future career growth.A resume building seminar equips students with essential skills and knowledge to effectively market themselves to potential employers, enhancing their career prospects and long-term professional success."
@@ -69,7 +69,7 @@ const Index = () => {
     {
       id: 1,
       image:
-        "https://firebasestorage.googleapis.com/v0/b/gdsc-pesmcoe-2022.appspot.com/o/events%2Forientation.jpeg?alt=media&token=d622832d-8079-4dfa-97c7-ddb03d361618",
+        "images/photos/brainstromersmeet.jpg",
       name: "Technical Quiz",
       paragraphs: [
         "Technical quiz focuses on testing knowledge and understanding of technical subjects. It may be used to access the knowledge of students, professionals, or enthusiasts in a particular field, and may be conducted in various formats, such as online quizzes, written tests or live competitions.",

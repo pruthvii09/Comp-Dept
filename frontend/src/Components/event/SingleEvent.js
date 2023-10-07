@@ -11,7 +11,7 @@ const SingleEvent = ({ event }) => {
   return (
     <div className={styles.event}>
       <div className={styles.left_container}>
-        <img src={event?.image} alt={event?.name} />
+        <img style={{borderRadius:"5px"}} src={event?.image} alt={event?.name} />
       </div>
 
       <div className={styles.right_container}>

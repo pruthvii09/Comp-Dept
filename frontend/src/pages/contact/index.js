@@ -10,40 +10,40 @@ const Index = () => {
       </Header>
 
       <div className={styles.contact_container}>
-        <div className={styles.notices}>
+        <a href="pdf/Admission Notice 2023-24.pdf" className={styles.notices}>
           <img src="images/photos/pdf.png" alt="" />
           <p>BE (Computer Engineering)-2019 Course</p>
-        </div>
+        </a>
 
-        <div className={styles.notices}>
+        <a href="pdf/Admission Notice 2023-24.pdf" className={styles.notices}>
           <img src="images/photos/pdf.png" alt="" />
           <p>TE (Computer Engineering)-2019 Course</p>
-        </div>
+        </a>
 
-        <div className={styles.notices}>
+        <a href="pdf/Admission Notice 2023-24.pdf" className={styles.notices}>
           <img src="images/photos/pdf.png" alt="" />
           <p>SE (Computer Engineering)- 2019 COURSE</p>
-        </div>
+        </a>
 
-        <div className={styles.notices}>
+        <a href="pdf/Admission Notice 2023-24.pdf" className={styles.notices}>
           <img src="images/photos/pdf.png" alt="" />
           <p>TE (Computer Engineering)- 2015 COURSE</p>
-        </div>
+        </a>
 
-        <div className={styles.notices}>
+        <a href="pdf/Admission Notice 2023-24.pdf" className={styles.notices}>
           <img src="images/photos/pdf.png" alt="" />
           <p>SE (Computer Engineering)- 2015 COURSE</p>
-        </div>
+        </a>
 
-        <div className={styles.notices}>
+        <a href="pdf/Admission Notice 2023-24.pdf" className={styles.notices}>
           <img src="images/photos/pdf.png" alt="" />
           <p>BE (Computer Engineering)- 2015 COURSE</p>
-        </div>
+        </a>
 
-        <div className={styles.notices}>
+        <a href="pdf/Admission Notice 2023-24.pdf" className={styles.notices}>
           <img src="images/photos/pdf.png" alt="" />
           <p>BE (Computer Engineering)- 2012 COURSE</p>
-        </div>
+        </a>
       </div>
     </div>
   );

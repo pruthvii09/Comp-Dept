@@ -41,7 +41,7 @@ const Layout = ({ children }) => {
           </li>
           <li>
             <Link to="/team" onClick={() => setOpen(!open)}>
-              Team
+              Staff
             </Link>
           </li>
           {/* <li>
@@ -75,7 +75,7 @@ const Layout = ({ children }) => {
                 onClick={() => setOpen(!open)}
                 className={styles.active}
               >
-                Register
+                ERP Login
               </Link>
             </li>
           )}
@@ -116,17 +116,17 @@ const Layout = ({ children }) => {
             </li>
             <li>
               <span>
-                <Link to="/team">Team</Link>
+                <Link to="/team">Staff</Link>
               </span>
             </li>
             <li>
               <span>
-                <Link to="/contact">Contact</Link>
+                <Link to="/contact">Notices</Link>
               </span>
             </li>
             <li>
               <span>
-                <Link to="/signup">Register</Link>
+                <Link to="/signup">ERP Login</Link>
               </span>
             </li>
           </ul>
