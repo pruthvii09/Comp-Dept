@@ -90,6 +90,44 @@
   color: blue;
   text-decoration: underline;
 }
+.field input[type="text"],
+.field input[type="email"],
+.field input[type="password"],
+.field select {
+  padding: 10px 6px;
+  font-size: 14px;
+  font-weight: 300;
+  outline: none;
+  border: 1px solid #c5c5c5;
+  width: 100%;
+  background: #f2f2f22d;
+  border-radius: 5px;
+}
+
+.field b {
+  font-weight: 300;
+  font-size: 13px;
+  color: #636363;
+  position: absolute;
+  top: -9px;
+  left: 4px;
+  background: #fdfdfd;
+  padding: 0px 5px;
+}
+.field {
+  margin: 10px 10px;
+  position: relative;
+  margin-bottom: 22px !important;
+}
+.button {
+  background: var(--blue) !important;
+  padding: 8px 15px;
+  border-radius: 5px;
+  border: none;
+  color: #fdfdfd;
+  margin-top: 15px;
+  cursor: pointer;
+}
 
 @media screen and (max-width: 530px) {
   .container {

@@ -75,15 +75,8 @@ const Index = () => {
   return (
     <div className={styles.wrapper}>
       <Header>
-        <h1>
-          <span className={styles.blue}>Lo</span>
-          <span className={styles.green}>g</span>
-          <span className={styles.red}>in</span>
-        </h1>
-        <p>
-          Welcome to Android Compose Camp 2022 - Powered by PES MCOE GDSC. Login
-          to join this amazing event!
-        </p>
+        <h1>Login</h1>
+        <p>Welcome to Computer Depratment PESMCOE Register to To Your ERP</p>
       </Header>
 
       <div className={styles.container}>

@@ -88,13 +88,29 @@ const Index = () => {
       <Dialog
         openDialog={openDialog}
         setOpenDialog={setOpenDialog}
-        title={"Registration Successful!"}
+        title={"Request Certificate"}
         children={
           <div>
-            <p>Thank you for registration!</p>
+            <p style={{ marginBottom: "20px" }}>Fill The Following Form</p>
+            <div className={styles.field}>
+              <b>Name *</b>
+              <input type="text" placeholder="Enter your name" />
+            </div>
+            <div className={styles.field}>
+              <b>Month *</b>
+              <input type="text" placeholder="Enter Month" />
+            </div>
+            <div className={styles.field}>
+              <b>Year *</b>
+              <input type="text" placeholder="Enter Year" />
+            </div>
+            <div className={styles.field}>
+              <b>PRN No. *</b>
+              <input type="text" placeholder="Enter your PRN No." />
+            </div>
             <button className={styles.button}>
               <Link to="/profile" style={{ color: "white" }}>
-                Profile
+                Submit
               </Link>
             </button>
           </div>

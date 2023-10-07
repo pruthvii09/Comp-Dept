@@ -51,7 +51,7 @@ const FormComponent = ({ setStartExam, form, setForm, setStartTime }) => {
             </div>
 
             <div>
-              <h4>Enter Password To Start Survey</h4>
+              <h4>Type Continue To Start Survey</h4>
               <div className={formStyles.field}>
                 <b>Enter *</b>
                 <input
