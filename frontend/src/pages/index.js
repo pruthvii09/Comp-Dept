@@ -1,16 +1,16 @@
-import Home from './home';
-import Events from './events';
-import Team from './team';
-import Contact from './contact';
-import Signup from './signup';
-import Quiz from './quiz';
-import Login from './login';
-import Profile from './profile';
-import Forgot from './forgot';
-import ForgotPassword from './forgot/[id]';
-import ScorePage from './admin/score';
-import ErrorPage from './404';
-
+import Home from "./home";
+import Events from "./events";
+import Team from "./team";
+import Contact from "./contact";
+import Signup from "./signup";
+import Quiz from "./quiz";
+import Login from "./login";
+import Profile from "./profile";
+import Forgot from "./forgot";
+import ForgotPassword from "./forgot/[id]";
+import ScorePage from "./admin/score";
+import ErrorPage from "./404";
+import AllCertificates from "./AllCertificates";
 export {
   Home,
   Events,
@@ -24,4 +24,5 @@ export {
   ForgotPassword,
   ScorePage,
   ErrorPage,
+  AllCertificates,
 };

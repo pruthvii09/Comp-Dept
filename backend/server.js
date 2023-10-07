@@ -6,7 +6,7 @@ const path = require("path");
 
 const userRouter = require("./routes/userRouter");
 const quizRouter = require("./routes/quizRouter");
-const contactRouter = require("./routes/contactRouter");
+const feesRouter = require("./routes/feesRouter");
 const scoreRouter = require("./routes/scoreRouter");
 const certificateRouter = require("./routes/certificateRouter");
 // Initialize app
@@ -24,7 +24,7 @@ app.use((req, res, next) => {
 // Routes
 app.use("/api/users", userRouter);
 app.use("/api/quizzes", quizRouter);
-app.use("/api/contact", contactRouter);
+app.use("/api/fees", feesRouter);
 app.use("/api/score", scoreRouter);
 app.use("/api/certificate", certificateRouter);
 

@@ -1,4 +1,4 @@
-const mongoose = require('mongoose');
+const mongoose = require("mongoose");
 const Schema = mongoose.Schema;
 
 const scoreSchema = new Schema(
@@ -8,9 +8,6 @@ const scoreSchema = new Schema(
     },
     live: {
       type: Boolean,
-    },
-    password: {
-      type: String,
     },
     attende: [
       {
@@ -29,4 +26,4 @@ const scoreSchema = new Schema(
   }
 );
 
-module.exports = mongoose.model('Score', scoreSchema);
+module.exports = mongoose.model("Score", scoreSchema);

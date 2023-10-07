@@ -2,6 +2,7 @@ const bcrypt = require("bcrypt");
 const jwt = require("jsonwebtoken");
 const nodemailer = require("nodemailer");
 const User = require("../models/userModel");
+const Certificate = require("../models/certificateModel");
 
 // Create JWT
 const createToken = (_id) => {
@@ -67,6 +68,19 @@ const login = async (req, res) => {
   }
 };
 
+const getCertificates = async (req, res) => {
+  const { user } = req.params;
+  console.log(user);
+  try {
+    const userCertificate = await Certificate.find({ user });
+    if (!userCertificate) {
+      return res.status(400).json({ message: "No certificates" });
+    }
+    res.status(200).json({ userCertificate });
+  } catch (err) {
+    res.status(400).json({ message: "Internal error Please Reload" });
+  }
+};
 // Get profile info
 const getSingleProfile = async (req, res) => {
   const { id } = req.params;
@@ -227,5 +241,6 @@ module.exports = {
   forgetPassword,
   updatePassword,
   sendMail,
+  getCertificates,
   addScoreForQuizCategory,
 };

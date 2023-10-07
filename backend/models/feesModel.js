@@ -1,21 +1,17 @@
 const mongoose = require("mongoose");
 const Schema = mongoose.Schema;
 
-const certificateSchema = new Schema(
+const feesSchema = new Schema(
   {
-    name: {
+    examNo: {
       type: String,
       required: true,
     },
-    month: {
+    examPrn: {
       type: String,
       required: true,
     },
-    year: {
-      type: String,
-      required: true,
-    },
-    prn: {
+    fees: {
       type: String,
       required: true,
     },
@@ -29,4 +25,4 @@ const certificateSchema = new Schema(
   }
 );
 
-module.exports = mongoose.model("Certificate", certificateSchema);
+module.exports = mongoose.model("Fees", feesSchema);

@@ -8,7 +8,6 @@ const {
   getPassword,
   addCategory,
 } = require("../controllers/scoreController");
-
 const router = express.Router();
 
 router.post("/add-category/", addCategory);

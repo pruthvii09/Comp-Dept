@@ -1,10 +1,16 @@
 const Certificate = require("../models/certificateModel");
 
 const certificateRequest = async (req, res) => {
-  const { name, month, year, prn } = req.body;
+  const { name, month, year, prn, user } = req.body;
 
   try {
-    const certificate = await Certificate.create({ name, month, year, prn });
+    const certificate = await Certificate.create({
+      name,
+      month,
+      year,
+      prn,
+      user,
+    });
 
     if (certificate) {
       return res

@@ -36,7 +36,7 @@ const Layout = ({ children }) => {
           </li>
           <li>
             <Link to="/events" onClick={() => setOpen(!open)}>
-              Clubs
+              Staff
             </Link>
           </li>
           <li>

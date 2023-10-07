@@ -3,9 +3,9 @@ import {
   Routes,
   Route,
   Navigate,
-} from 'react-router-dom';
+} from "react-router-dom";
 
-import './App.css';
+import "./App.css";
 
 // Pages
 import {
@@ -20,10 +20,11 @@ import {
   Forgot,
   ForgotPassword,
   ErrorPage,
+  AllCertificates,
   ScorePage,
-} from '../src/pages';
-import Layout from './Components/Layout';
-import { useUserContext } from './hooks/useUserContext';
+} from "../src/pages";
+import Layout from "./Components/Layout";
+import { useUserContext } from "./hooks/useUserContext";
 
 const App = () => {
   const { user } = useUserContext();
@@ -52,12 +53,16 @@ const App = () => {
             <Route
               path="/quiz/:category"
               element={
-                localStorage.getItem('user') ? (
+                localStorage.getItem("user") ? (
                   <Quiz />
                 ) : (
                   <Navigate to="/login" />
                 )
               }
+            />
+            <Route
+              path="/allCertificates"
+              element={user ? <AllCertificates /> : <Login />}
             />
             <Route path="/forgot/" element={<Forgot />} />
             <Route path="/forgot/:id" element={<ForgotPassword />} />

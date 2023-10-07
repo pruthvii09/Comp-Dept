@@ -128,7 +128,30 @@
   margin-top: 15px;
   cursor: pointer;
 }
+.error {
+  border: 1px solid var(--red);
+  background: #ffe9e9;
+  padding: 10px;
+  font-weight: 400;
+  font-size: 15px;
+  margin-bottom: 20px;
+  color: var(--red);
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  border-radius: 5px;
+  margin: 10px;
+  margin-top: 25px;
+}
 
+.error i {
+  cursor: pointer;
+  font-size: 18px;
+}
+
+.error_field {
+  border-color: var(--red) !important;
+}
 @media screen and (max-width: 530px) {
   .container {
     width: 95%;

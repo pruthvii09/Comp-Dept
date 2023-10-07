@@ -117,12 +117,11 @@ const getPassword = async (req, res) => {
 
 // add new category
 const addCategory = async (req, res) => {
-  const { category, live, password, attende } = req.body;
+  const { category, live, attende } = req.body;
 
   const newCategory = await Score.create({
     category,
     live,
-    password,
     attende,
   });
 
