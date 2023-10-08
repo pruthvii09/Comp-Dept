@@ -159,7 +159,7 @@ const Index = () => {
         title={"Login Successful!"}
         children={
           <div>
-            <p>You are logged in to Android Compose Camp 2022 event!</p>
+            <p>You are logged in to your ERP Account</p>
             <button className={styles.button}>
               <Link to="/profile" style={{ color: "white" }}>
                 Profile

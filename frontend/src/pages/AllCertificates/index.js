@@ -67,7 +67,17 @@ const Index = () => {
                   <td>{item.month}</td>
                   <td>{item.year}</td>
                   <td>{item.prn}</td>
-                  <td>No</td>
+                  <td className={styles.editStatus}>
+                    <button
+                      className={
+                        item.recieved
+                          ? `${styles.btn} ${styles.green}`
+                          : `${styles.btn} ${styles.red}`
+                      }
+                    >
+                      {item.recieved ? "Yes" : "No"}
+                    </button>
+                  </td>
                 </tr>
               ))}
           </table>

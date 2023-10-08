@@ -7,7 +7,7 @@ import Dialog from "../../Components/Dialog";
 const Index = () => {
   const navigate = useNavigate();
   const { user, userData, dispatch } = useUserContext();
-  console.log(userData);
+  console.log("helodjdj0", userData);
   const [emptyFields, setEmptyFields] = useState([]);
   const [error, setError] = useState("");
   const [boxType, setBoxType] = useState("");
@@ -17,19 +17,24 @@ const Index = () => {
     month: "",
     year: "",
     prn: "",
-    user: userData?._id,
+    recieved: false,
+    user: userData ? userData?._id : "undefined",
   });
   const [examData, setExamData] = useState({
     examNo: "",
     examPrn: "",
     fees: "",
-    user: userData?._id,
+    user: userData ? userData?._id : "undefined",
   });
-  // console.log(user?._id);
   console.log("first,", userData?._id);
   const [openDialog, setOpenDialog] = useState(false);
+
   useEffect(() => {
     window.scrollTo(0, 0);
+    if (!user) {
+      console.log("userData._id is not available yet.");
+      return; // Exit early if _id is not available yet
+    }
     const fetchData = async () => {
       const response = await fetch(
         `https://localhost:4000/api/users/${user?.id}`,
@@ -50,7 +55,7 @@ const Index = () => {
     if (user) {
       fetchData();
     }
-  }, []);
+  }, [user]);
   const handleButtonClick = (type) => {
     console.log(type);
     setBoxType(type);
@@ -58,12 +63,16 @@ const Index = () => {
   };
   const handleFees = async () => {
     setError("");
+    if (!userData) {
+      console.log("userData._id is not available yet.");
+      return; // Exit early if _id is not available yet
+    }
     console.log(examData);
     if (
-      examData.examNo.length <= 0 ||
-      examData.examPrn.length <= 0 ||
-      examData.fees.length <= 0 ||
-      examData.user.length <= 0
+      examData?.examNo.length <= 0 ||
+      examData?.examPrn.length <= 0 ||
+      examData?.fees.length <= 0 ||
+      examData?.user.length <= 0
     ) {
       setError("Please enter all the details");
       setShowError(true);
@@ -103,6 +112,7 @@ const Index = () => {
           examNo: "",
           examPrn: "",
           fees: "",
+          recieved: false,
           user: userData?._id,
         });
         setOpenDialog(false);
@@ -160,7 +170,6 @@ const Index = () => {
       }
     }
   };
-
   return (
     <div className={styles.container}>
       {userData ? (

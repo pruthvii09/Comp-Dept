@@ -81,7 +81,67 @@ const getCertificates = async (req, res) => {
     res.status(400).json({ message: "Internal error Please Reload" });
   }
 };
-// Get profile info
+const getAllProfile = async (req, res) => {
+  try {
+    const users = await User.find().select("email name contact erp_id year");
+    if (users.length === 0) {
+      return res.status(400).json({ message: "No Users Found" });
+    }
+    res.status(200).json({ users });
+  } catch (err) {
+    console.error(err);
+    res.status(500).json({ message: "Internal Error" });
+  }
+};
+const deleteSignleProfile = async (req, res) => {
+  const { id } = req.params;
+  try {
+    const user = await User.findByIdAndDelete(id);
+    if (!user) {
+      return res.status(400).json({ message: "No user Found" });
+    }
+    res.status(200).json({ user });
+  } catch (err) {
+    res.status(400).json({ message: "Server Error" });
+  }
+};
+const sendMailToAll = async (req, res) => {
+  const { subject, content } = req.body;
+  try {
+    const users = await User.find({}, "email"); // Fetch all users and only retrieve their email field
+
+    if (users.length === 0) {
+      return res.status(400).json({ error: "No users found" });
+    }
+
+    const emailsArray = users.map((user) => user.email); // Extract emails from the users
+    console.log(emailsArray);
+    const mailTransporter = nodemailer.createTransport({
+      service: "gmail",
+      auth: {
+        user: process.env.EMAIL,
+        pass: process.env.PASSWORD,
+      },
+    });
+    const mailDetails = {
+      from: process.env.EMAIL,
+      to: emailsArray.join(","), // Join all emails into a comma-separated string
+      subject: subject,
+      html: `<p>${content}</p>`,
+    };
+
+    mailTransporter.sendMail(mailDetails, function (err, data) {
+      if (err) {
+        res.status(400).json({ error: err });
+      } else {
+        res.status(200).json({ message: "Email sent to all users!" });
+      }
+    });
+  } catch (error) {
+    res.status(400).json({ error: error.message });
+  }
+};
+
 const getSingleProfile = async (req, res) => {
   const { id } = req.params;
 
@@ -243,4 +303,7 @@ module.exports = {
   sendMail,
   getCertificates,
   addScoreForQuizCategory,
+  getAllProfile,
+  deleteSignleProfile,
+  sendMailToAll,
 };

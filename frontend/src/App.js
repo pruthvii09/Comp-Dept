@@ -22,6 +22,9 @@ import {
   ErrorPage,
   AllCertificates,
   ScorePage,
+  AdminPage,
+  AllAdminRequest,
+  SendMail,
 } from "../src/pages";
 import Layout from "./Components/Layout";
 import { useUserContext } from "./hooks/useUserContext";
@@ -66,7 +69,9 @@ const App = () => {
             />
             <Route path="/forgot/" element={<Forgot />} />
             <Route path="/forgot/:id" element={<ForgotPassword />} />
-            {/* <Route path="/admin/score" element={<ScorePage />} /> */}
+            <Route path="/admin" element={<AdminPage />} />
+            <Route path="/admin/allrequests" element={<AllAdminRequest />} />
+            <Route path="/admin/sendMail" element={<SendMail />} />
             <Route path="*" element={<ErrorPage />} />
           </Routes>
         </Layout>

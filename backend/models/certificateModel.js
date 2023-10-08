@@ -19,6 +19,10 @@ const certificateSchema = new Schema(
       type: String,
       required: true,
     },
+    recieved: {
+      type: Boolean,
+      required: true,
+    },
     user: {
       type: String,
       required: true,

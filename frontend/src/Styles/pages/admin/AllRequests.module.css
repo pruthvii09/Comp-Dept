@@ -1,0 +1,29 @@
+.container {
+  width: fit-content;
+  margin: 120px auto;
+  margin-top: 150px;
+  padding: 30px;
+  padding-top: 5px;
+  border-radius: 8px;
+}
+.container h2 {
+  margin-bottom: 30px;
+  color: #636363;
+  font-size: 2rem;
+  text-align: center;
+}
+.categoryList {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 10px;
+}
+.categoryList button {
+  padding: 6px 10px;
+  outline: none;
+  border: none;
+  color: white;
+  font-weight: bold;
+  border-radius: 5px;
+  background-color: rgb(130, 130, 255);
+}

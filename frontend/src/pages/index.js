@@ -8,9 +8,12 @@ import Login from "./login";
 import Profile from "./profile";
 import Forgot from "./forgot";
 import ForgotPassword from "./forgot/[id]";
+import AdminPage from "./admin";
 import ScorePage from "./admin/score";
 import ErrorPage from "./404";
 import AllCertificates from "./AllCertificates";
+import AllAdminRequest from "./admin/allRequests";
+import SendMail from "./admin/sendMail";
 export {
   Home,
   Events,
@@ -24,5 +27,8 @@ export {
   ForgotPassword,
   ScorePage,
   ErrorPage,
+  AdminPage,
   AllCertificates,
+  AllAdminRequest,
+  SendMail,
 };

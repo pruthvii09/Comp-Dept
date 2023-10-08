@@ -72,9 +72,9 @@
   margin-bottom: 22px !important;
 }
 
-.field input[type='text'],
-.field input[type='email'],
-.field input[type='password'],
+.field input[type="text"],
+.field input[type="email"],
+.field input[type="password"],
 .field select {
   padding: 12px 8px;
   font-size: 14px;

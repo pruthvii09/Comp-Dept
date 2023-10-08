@@ -5,18 +5,6 @@
   align-items: center;
   justify-content: center;
 }
-.profile_container h3 {
-  text-align: center;
-  font-weight: 400;
-  color: #333;
-  margin: 30px 10px;
-  margin-bottom: 30px;
-  font-size: 1.5rem;
-}
-.ordersContainer button a {
-  color: #fdfdfd;
-}
-
 .ordersContainer table th {
   font-weight: 600;
   font-size: 14px;
@@ -30,29 +18,7 @@
 .ordersContainer table td {
   border: 1px solid black;
   border-collapse: collapse;
-}
-
-.orderData {
-  margin: 5px 0px;
-}
-
-.orderData td {
-  font-size: 13px;
   padding: 5px;
-}
-.orderData input {
-  margin-left: 10px;
-  cursor: pointer;
-}
-
-.orderData .active {
-  font-weight: 600;
-  color: #12b400;
-}
-
-.orderData .deactive {
-  font-weight: 600;
-  color: #ea1616;
 }
 .editStatus {
   border: none !important;
