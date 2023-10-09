@@ -3,11 +3,12 @@ import { Link, useNavigate } from "react-router-dom";
 import { useUserContext } from "../../hooks/useUserContext";
 import styles from "../../Styles/pages/profile/Profile.module.css";
 import Dialog from "../../Components/Dialog";
+import Spinner from "../../Components/Spinner";
 
 const Index = () => {
   const navigate = useNavigate();
   const { user, userData, dispatch } = useUserContext();
-  console.log("helodjdj0", userData);
+  const [loading, setLoading] = useState(false);
   const [emptyFields, setEmptyFields] = useState([]);
   const [error, setError] = useState("");
   const [boxType, setBoxType] = useState("");
@@ -67,6 +68,7 @@ const Index = () => {
       console.log("userData._id is not available yet.");
       return; // Exit early if _id is not available yet
     }
+    setLoading(true);
     console.log(examData);
     if (
       examData?.examNo.length <= 0 ||
@@ -115,6 +117,7 @@ const Index = () => {
           recieved: false,
           user: userData?._id,
         });
+        setLoading(false);
         setOpenDialog(false);
         var pay = new window.Razorpay(options);
         pay.open();
@@ -122,6 +125,7 @@ const Index = () => {
       if (!response.ok) {
         setError(json.error);
         setShowError(true);
+        setLoading(false);
       }
     }
   };
@@ -357,10 +361,14 @@ const Index = () => {
                   ></i>
                 </div>
               )}
-              <button onClick={handleFees} className={styles.button}>
+              <button
+                onClick={handleFees}
+                className={`${styles.button} ${styles.feesBtn}`}
+              >
                 <Link to="/profile" style={{ color: "white" }}>
                   Submit
                 </Link>
+                {loading && <Spinner />}
               </button>
             </div>
           }

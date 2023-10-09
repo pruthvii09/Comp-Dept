@@ -3,6 +3,7 @@ import { useNavigate } from "react-router-dom";
 import styles from "../../../Styles/pages/admin/AllRequests.module.css";
 import AllStudents from "../../../Components/admin/All Students";
 import AllCertificates from "../../../Components/admin/AllCertificates";
+import Survey from "../../../Components/admin/Survey";
 const Index = () => {
   const [request, setRequest] = useState("All Students");
   const navigate = useNavigate();
@@ -18,7 +19,7 @@ const Index = () => {
             Certificate Request
           </button>
           <button>Exam Fees</button>
-          <button>Survey</button>
+          <button onClick={() => setRequest("Survey")}>Survey</button>
           <button onClick={() => navigate("/admin/sendMail")}>
             Send Mails
           </button>
@@ -28,6 +29,7 @@ const Index = () => {
         <div>
           {request === "Certificate Request" ? <AllCertificates /> : null}
         </div>
+        <div>{request === "Survey" ? <Survey /> : null}</div>
       </div>
     </div>
   );

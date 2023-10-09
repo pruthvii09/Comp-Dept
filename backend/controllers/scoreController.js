@@ -35,7 +35,17 @@ const getScoreByCategory = async (req, res) => {
   }
   res.status(400).json({ error: "Could not find score!" });
 };
-
+const getSurvey = async (req, res) => {
+  try {
+    const survey = await Score.find();
+    if (!survey) {
+      res.status(400).json({ message: "No Survey Found" });
+    }
+    res.status(200).json({ survey });
+  } catch (err) {
+    res.status(400).json({ message: "Interal Error" });
+  }
+};
 // Add score
 const addScoreByCategory = async (req, res) => {
   const { category } = req.params;
@@ -114,8 +124,6 @@ const getPassword = async (req, res) => {
 
   res.status(400).json({ error: "Could not find password" });
 };
-
-// add new category
 const addCategory = async (req, res) => {
   const { category, live, attende } = req.body;
 
@@ -139,4 +147,5 @@ module.exports = {
   checkLive,
   getPassword,
   addCategory,
+  getSurvey,
 };
