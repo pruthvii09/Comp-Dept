@@ -1,8 +1,15 @@
-import React, { useEffect, useState } from "react";
+import React, { useEffect, useRef, useState } from "react";
 import styles from "../../Styles/components/AllStudents.module.css";
+import { useDownloadExcel } from "react-export-table-to-excel";
 const Survey = () => {
   const [loading, setLoading] = useState(false);
   const [data, setData] = useState("");
+  const tableRef = useRef(null);
+  const { onDownload } = useDownloadExcel({
+    currentTableRef: tableRef.current,
+    filename: "Survey",
+    sheet: "Survey",
+  });
   useEffect(() => {
     const fetchData = async () => {
       try {
@@ -24,9 +31,16 @@ const Survey = () => {
     fetchData();
   }, []);
   return (
-    <div>
+    <div
+      style={{
+        display: "flex",
+        flexDirection: "column",
+        alignItems: "center",
+        justifyContent: "center",
+      }}
+    >
       <div className={styles.ordersContainer}>
-        <table>
+        <table ref={tableRef}>
           <tr>
             <th>ID</th>
             <th>Name Of Student</th>
@@ -61,6 +75,9 @@ const Survey = () => {
             )}
         </table>
       </div>
+      <button onClick={onDownload} className={styles.download}>
+        Download Excel
+      </button>
     </div>
   );
 };

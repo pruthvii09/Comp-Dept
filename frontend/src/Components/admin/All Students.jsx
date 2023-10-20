@@ -1,9 +1,16 @@
-import React, { useEffect, useState } from "react";
+import React, { useEffect, useRef, useState } from "react";
 import styles from "../../Styles/components/AllStudents.module.css";
 import { Trash2 } from "lucide-react";
+import { downloadExcel, useDownloadExcel } from "react-export-table-to-excel";
 const AllStudents = () => {
   const [loading, setLoading] = useState(false);
   const [data, setData] = useState("");
+  const tableRef = useRef(null);
+  const { onDownload } = useDownloadExcel({
+    currentTableRef: tableRef.current,
+    filename: "Students",
+    sheet: "Students",
+  });
   useEffect(() => {
     const fetchData = async () => {
       try {
@@ -42,9 +49,9 @@ const AllStudents = () => {
     }
   };
   return (
-    <div>
+    <div className={styles.mainContainer}>
       <div className={styles.ordersContainer}>
-        <table>
+        <table ref={tableRef}>
           <tr>
             <th>ID</th>
             <th>Name Of Student</th>
@@ -74,6 +81,9 @@ const AllStudents = () => {
               </tr>
             ))}
         </table>
+        <button onClick={onDownload} className={styles.download}>
+          Download Excel
+        </button>
       </div>
     </div>
   );

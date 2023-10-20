@@ -15,6 +15,8 @@ const Index = () => {
     contact: "",
     erp_id: "",
     year: "",
+    shift: "",
+    gender: "",
     password: "",
   });
 
@@ -80,6 +82,8 @@ const Index = () => {
           contact: "",
           erp_id: "",
           year: "",
+          shift: "",
+          gender: "",
           password: "",
         });
         setTimeout(() => {
@@ -151,6 +155,18 @@ const Index = () => {
                 placeholder="Enter your ERP ID"
                 value={data?.erp_id}
                 onChange={(e) => setData({ ...data, erp_id: e.target.value })}
+                className={
+                  emptyFields?.includes("erp_id") ? styles.error_field : ""
+                }
+              />
+            </div>
+            <div className={styles.field}>
+              <b>Shift *</b>
+              <input
+                type="text"
+                placeholder="Enter your Shift"
+                value={data?.shift}
+                onChange={(e) => setData({ ...data, shift: e.target.value })}
                 className={
                   emptyFields?.includes("erp_id") ? styles.error_field : ""
                 }

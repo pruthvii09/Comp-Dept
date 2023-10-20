@@ -13,9 +13,24 @@ const createToken = (_id) => {
 
 // User signup
 const signup = async (req, res) => {
-  const { email, name, contact, erp_id, year, password } = req.body;
+  const { email, name, contact, erp_id, year, shift, password } = req.body;
 
   try {
+    if (!email) {
+      res.status(400).json({ error: "Please provide Email Address" });
+    }
+    if (!name) {
+      res.status(400).json({ error: "Please provide your name" });
+    }
+    if (!erp_id) {
+      res.status(400).json({ error: "Please provide ERP ID" });
+    }
+    if (!year) {
+      res.status(400).json({ error: "Please provide Academaic Year" });
+    }
+    if (!password) {
+      res.status(400).json({ error: "Please provide password" });
+    }
     const exist = await User.findOne({ email });
 
     if (exist) {
@@ -29,6 +44,7 @@ const signup = async (req, res) => {
       name,
       contact,
       erp_id,
+      shift,
       year,
       password: hash,
     });
@@ -105,6 +121,7 @@ const deleteSignleProfile = async (req, res) => {
     res.status(400).json({ message: "Server Error" });
   }
 };
+
 const sendMailToAll = async (req, res) => {
   const { subject, content } = req.body;
   try {
